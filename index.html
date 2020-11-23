@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>Titulo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <!-- Start -->
+    <div id="app" class="container mt-5">
+
+        <h3>Tareas</h3>
+        <input type="text" class="form-control my-3" v-model="inputNuevaTarea" @keyup.enter="nuevaTarea">
+        <button @click="nuevaTarea" class="btn btn-primary">Agregar</button>
+
+        <button class="btn btn-danger my-3" @click="eliminarTodo()">Eliminar todas las tareas</button>
+
+        <div class="mt-3" v-for="(tarea, index) of tareas">
+          <div role="alert" :class="['alert', tarea.estado ? 'alert-success' : 'alert-danger']">
+              <div class="d-flex justify-content-between">
+                  <div>
+                      {{ tarea.nombre }}
+                  </div>
+                  <div>
+                      <button class="btn btn-success" @click="editarTarea(index)">OK</button>
+                      <button class="btn btn-danger" @click="eliminarTarea(index)">X</button>
+                  </div>
+              </div>
+          </div>
+        </div>
+        
+
+    </div>
+    <!-- End -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
